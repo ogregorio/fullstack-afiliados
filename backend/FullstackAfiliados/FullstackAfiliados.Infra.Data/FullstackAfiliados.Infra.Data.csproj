@@ -16,4 +16,8 @@
       <ProjectReference Include="..\FullstackAfiliados.Domain\FullstackAfiliados.Domain.csproj" />
     </ItemGroup>
 
+
+
+
+
 </Project>
