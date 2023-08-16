@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archimate:model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:archimate="http://www.archimatetool.com/archimate" name="FullstackAfiliados" id="id-1ff5a5c653a1493eb563fe853d52790f" version="5.0.0">
+  <folder name="Strategy" id="id-14ce81db436e40c3820f9eeb5cf843df" type="strategy"/>
+  <folder name="Business" id="id-16aa200e72bd44d4895fde3f3f35109a" type="business"/>
+  <folder name="Application" id="id-98e6ebe99d4948fd9b41a0ba6aa93f9d" type="application">
+    <element xsi:type="archimate:ApplicationInterface" name="FullstackAfiliados.Api" id="id-9a5c73f7a114470389433e51957461bb">
+      <documentation>Neste projeto, é construída a API da aplicação, uma Web API para expor funcionalidades.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationService" name="FullstackAfiliados.Application" id="id-641e7bed2bdb40bc95424a7cdccdda19">
+      <documentation>Este projeto engloba os serviços de aplicação que conectam a interface do usuário à camada de domínio.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationFunction" name="FullstackAfiliados.Domain" id="id-7baa79898b68427e944ae045b62f58af">
+      <documentation>Este projeto abrange a lógica central de negócios da aplicação.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationFunction" name="FullstackAfiliados.Infra.Data" id="id-13c9d7ba6de741e2b7d808f7879d6602">
+      <documentation>Este projeto envolve o acesso a dados da aplicação, possivelmente através do uso do Entity Framework.</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationCollaboration" name="FullstackAfiliados.Infra.CrossCutting.IoC" id="id-58ea953530ca4d75ac9daff5c8eb7d19">
+      <documentation>Este projeto trata da configuração de Inversão de Controle (IoC) e injeção de dependência em toda a solução.
+</documentation>
+    </element>
+    <element xsi:type="archimate:ApplicationCollaboration" name="FullstackAfiliados.Infra.CrosCutting.Commons" id="id-a8356fc6138b4cb9b42f09467e1dea6d">
+      <documentation>Neste projeto, encontram-se componentes genéricos ou utilitários que podem ser compartilhados por toda a solução.
+</documentation>
+    </element>
+  </folder>
+  <folder name="Technology &amp; Physical" id="id-150fe94c8f9b4bf09bee6546ef9f38bd" type="technology"/>
+  <folder name="Motivation" id="id-ee978a0da8d2449cb97f14683cc4e67f" type="motivation"/>
+  <folder name="Implementation &amp; Migration" id="id-50d20edecff34c959b722d8790eaf76a" type="implementation_migration"/>
+  <folder name="Other" id="id-9694bd251f694d00a5e4caae5656e1a3" type="other"/>
+  <folder name="Relations" id="id-bb9f930a53124df38b328785cc768e6a" type="relations">
+    <element xsi:type="archimate:ServingRelationship" id="id-db5181fb1f54454d917bb02621289682" source="id-13c9d7ba6de741e2b7d808f7879d6602" target="id-7baa79898b68427e944ae045b62f58af"/>
+    <element xsi:type="archimate:RealizationRelationship" id="id-2183b407ec5442c3b515ede5d2414455" source="id-7baa79898b68427e944ae045b62f58af" target="id-641e7bed2bdb40bc95424a7cdccdda19"/>
+    <element xsi:type="archimate:ServingRelationship" id="id-e08785f7d87e4d1187d49537ce641b28" source="id-641e7bed2bdb40bc95424a7cdccdda19" target="id-9a5c73f7a114470389433e51957461bb"/>
+  </folder>
+  <folder name="Views" id="id-7cf17b6e1cbe4952aa2b9c00f0dd0173" type="diagrams">
+    <element xsi:type="archimate:ArchimateDiagramModel" name="Arquitetura do Backend" id="id-d2ce012aa5c845fca0adff4586935f40">
+      <child xsi:type="archimate:Group" id="id-9cc65296a6d04d1d89c7ae05551e98e6" name="Application" textAlignment="1">
+        <bounds x="84" y="36" width="949" height="505"/>
+        <child xsi:type="archimate:Group" id="id-87df5c94e84f4fba9533215c313b12a1" name="Presentation" textAlignment="1">
+          <bounds x="24" y="48" width="289" height="169"/>
+          <child xsi:type="archimate:DiagramObject" id="id-ee18a572a60f44f38a555978a3870377" targetConnections="id-83a7723a2f124304b641cccf7f64bed7" archimateElement="id-9a5c73f7a114470389433e51957461bb">
+            <bounds x="12" y="36" width="265" height="121"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Group" id="id-52e2c9cad8584e68a95d8890a0dba95a" name="Application" textAlignment="1">
+          <bounds x="336" y="48" width="289" height="169"/>
+          <child xsi:type="archimate:DiagramObject" id="id-28500b34d07b42feab17f9244f2ce853" targetConnections="id-8b94c04f57314ba488a59b4a82d91561" archimateElement="id-641e7bed2bdb40bc95424a7cdccdda19">
+            <bounds x="12" y="36" width="265" height="121"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-83a7723a2f124304b641cccf7f64bed7" source="id-28500b34d07b42feab17f9244f2ce853" target="id-ee18a572a60f44f38a555978a3870377" archimateRelationship="id-e08785f7d87e4d1187d49537ce641b28"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Group" id="id-d5522bcfed374abeb17060fb781422cd" name="Domain" textAlignment="1">
+          <bounds x="636" y="48" width="289" height="169"/>
+          <child xsi:type="archimate:DiagramObject" id="id-dd28bbe300564f97afca3b443e7a35d4" targetConnections="id-3cfc7f80e6c048b8b4ed5a2b1f585dd0" archimateElement="id-7baa79898b68427e944ae045b62f58af">
+            <bounds x="12" y="36" width="265" height="121"/>
+            <sourceConnection xsi:type="archimate:Connection" id="id-8b94c04f57314ba488a59b4a82d91561" source="id-dd28bbe300564f97afca3b443e7a35d4" target="id-28500b34d07b42feab17f9244f2ce853" archimateRelationship="id-2183b407ec5442c3b515ede5d2414455"/>
+          </child>
+        </child>
+        <child xsi:type="archimate:Group" id="id-7b7dea3fa3d4473999b9fbe22f77a219" name="Infra" textAlignment="1">
+          <bounds x="24" y="240" width="901" height="229"/>
+          <child xsi:type="archimate:Group" id="id-5f1bfe461b91454698e0d5d2e1cb9835" name="Data" textAlignment="1">
+            <bounds x="24" y="36" width="289" height="169"/>
+            <child xsi:type="archimate:DiagramObject" id="id-e2b0b657c3974673b8f356f337c84aa3" archimateElement="id-13c9d7ba6de741e2b7d808f7879d6602">
+              <bounds x="12" y="36" width="265" height="121"/>
+              <sourceConnection xsi:type="archimate:Connection" id="id-3cfc7f80e6c048b8b4ed5a2b1f585dd0" source="id-e2b0b657c3974673b8f356f337c84aa3" target="id-dd28bbe300564f97afca3b443e7a35d4" archimateRelationship="id-db5181fb1f54454d917bb02621289682">
+                <bendpoint startX="72" startY="-120" endX="-516" endY="108"/>
+                <bendpoint startX="588" startY="-120" endY="108"/>
+              </sourceConnection>
+            </child>
+          </child>
+          <child xsi:type="archimate:Group" id="id-795acfe4851c4844847106f495cd24f2" name="CrossCutting" textAlignment="1">
+            <bounds x="336" y="36" width="553" height="169"/>
+            <child xsi:type="archimate:DiagramObject" id="id-c6af9d604969452998ec4c0be5dfecc2" archimateElement="id-58ea953530ca4d75ac9daff5c8eb7d19">
+              <bounds x="12" y="36" width="253" height="121"/>
+            </child>
+            <child xsi:type="archimate:DiagramObject" id="id-d19b01efdb9d47f29f4a24bea3c18c52" archimateElement="id-a8356fc6138b4cb9b42f09467e1dea6d">
+              <bounds x="276" y="36" width="265" height="121"/>
+            </child>
+          </child>
+        </child>
+      </child>
+      <documentation>A arquitetura limpa, também conhecida como Clean Architecture, é uma abordagem de design de software que visa criar sistemas altamente coesos, independentes de frameworks externos e testáveis. Ela promove a separação clara de responsabilidades em camadas concêntricas, com o objetivo de manter a lógica de negócios centralizada e isolada das preocupações externas.
+</documentation>
+    </element>
+  </folder>
+</archimate:model>
