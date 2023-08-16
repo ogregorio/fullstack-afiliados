@@ -1,7 +1,7 @@
+using FullstackAfiliados.Domain.Entities.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PXBank.AccessControl.Domain.Entities.Base;
 
 namespace FullstackAfiliados.Infra.Data.Data.Configurations.Base;
 

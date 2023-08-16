@@ -1,4 +1,4 @@
-namespace PXBank.AccessControl.Domain.Entities.Base
+namespace FullstackAfiliados.Domain.Entities.Base
 {
     public abstract class Entity
     {
