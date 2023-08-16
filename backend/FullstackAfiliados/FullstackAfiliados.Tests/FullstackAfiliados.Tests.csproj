@@ -27,7 +27,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FullstackAfiliados.Domain\FullstackAfiliados.Domain.csproj" />
+      <ProjectReference Include="..\FullstackAfiliados.Infra.CrosCutting.Commons\FullstackAfiliados.Infra.CrosCutting.Commons.csproj" />
     </ItemGroup>
+
+
+
+
 
 
 

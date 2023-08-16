@@ -1,4 +1,3 @@
-using System.Linq.Expressions;
 using FullstackAfiliados.Domain.Entities.Base;
 using FullstackAfiliados.Domain.Services.Implemented;
 using FullstackAfiliados.Tests.Factory;
