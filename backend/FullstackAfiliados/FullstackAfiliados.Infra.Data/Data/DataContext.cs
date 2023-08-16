@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Npgsql;
 
 namespace FullstackAfiliados.Infra.Data.Data;
@@ -11,8 +10,8 @@ public class DataContext : DbContext
         var connectionStringBuilder = new NpgsqlConnectionStringBuilder
         {
             Host = Environment.GetEnvironmentVariable("DATABASE_HOST"),
-            Port = int.Parse(Environment.GetEnvironmentVariable("PG_SERVER") ?? "5432"),
-            Database = Environment.GetEnvironmentVariable("DEFAULT_DATABASE"),
+            Port = int.Parse(Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "5432"),
+            Database = Environment.GetEnvironmentVariable("DATABASE_DEFAULT"),
             Username = Environment.GetEnvironmentVariable("DATABASE_USER"),
             Password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD")
         };
