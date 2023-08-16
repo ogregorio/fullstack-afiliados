@@ -5,6 +5,7 @@ namespace FullstackAfiliados.Domain.Entities;
 public class Transaction: Entity
 {
     public virtual TransactionType Type { get; set; }
+    public virtual int RelativeType { get; set; }
     public virtual Guid TypeId { get; set; }
     public DateTime Date { get; set; }
     public string Product { get; set; }
