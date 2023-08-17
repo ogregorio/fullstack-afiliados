@@ -11,4 +11,12 @@
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\FullstackAfiliados.Domain\FullstackAfiliados.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FullstackAfiliados.Infra.CrosCutting.Commons\FullstackAfiliados.Infra.CrosCutting.Commons.csproj" />
+    </ItemGroup>
+
 </Project>
