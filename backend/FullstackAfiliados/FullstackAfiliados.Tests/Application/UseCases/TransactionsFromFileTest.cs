@@ -3,6 +3,7 @@ using FullstackAfiliados.Application.UseCases.Transactions.Handlers;
 using FullstackAfiliados.Application.UseCases.Transactions.Request;
 using FullstackAfiliados.Domain.Entities;
 using FullstackAfiliados.Domain.Services.Interfaces;
+using FullstackAfiliados.Tests.Factory;
 using Microsoft.AspNetCore.Http;
 using Moq;
 
@@ -10,13 +11,15 @@ namespace FullstackAfiliados.Tests.Application.UseCases
 {
     public class TransactionsFromFileHandlerTests
     {
-        private readonly Mock<ITransactionService> _mockService;
+        private readonly Mock<ITransactionService> _mockTransactionService;
+        private readonly Mock<ITransactionTypeService> _mockTransactionTypeService;
         private readonly TransactionsFromFileHandler _handler;
 
         public TransactionsFromFileHandlerTests()
         {
-            _mockService = new Mock<ITransactionService>();
-            _handler = new TransactionsFromFileHandler(_mockService.Object);
+            _mockTransactionService = new Mock<ITransactionService>();
+            _mockTransactionTypeService = new Mock<ITransactionTypeService>();
+            _handler = new TransactionsFromFileHandler(_mockTransactionService.Object, _mockTransactionTypeService.Object);
         }
 
         private Mock<IFormFile> CreateMockFormFile(string content)
@@ -43,6 +46,10 @@ namespace FullstackAfiliados.Tests.Application.UseCases
             var mockFormFile = CreateMockFormFile(content);
             var request = new TransactionsFromFileRequest { File = mockFormFile.Object };
 
+            _mockTransactionTypeService
+                .Setup(x => x.GetByRelativeTypeAsync(type))
+                .ReturnsAsync(EntityFactory.GetFakeTransactionType);
+
             #endregion
 
             #region Act
@@ -54,7 +61,7 @@ namespace FullstackAfiliados.Tests.Application.UseCases
             #region Assert
 
             Assert.True(response.Success);
-            _mockService.Verify(s => s.CreateAsync(It.IsAny<Transaction>()), Times.AtLeastOnce);
+            _mockTransactionService.Verify(s => s.CreateAsync(It.IsAny<Transaction>()), Times.AtLeastOnce);
 
             #endregion
         }
