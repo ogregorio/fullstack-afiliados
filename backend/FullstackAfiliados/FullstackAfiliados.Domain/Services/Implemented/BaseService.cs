@@ -6,8 +6,8 @@ namespace FullstackAfiliados.Domain.Services.Implemented
 {
     public class BaseService<T> : IBaseService<T> where T : Entity
     {
-        private readonly DbSet<T> _dbSet;
-        private readonly DbContext _context;
+        protected readonly DbSet<T> _dbSet;
+        protected readonly DbContext _context;
 
         public BaseService(DbContext context)
         {

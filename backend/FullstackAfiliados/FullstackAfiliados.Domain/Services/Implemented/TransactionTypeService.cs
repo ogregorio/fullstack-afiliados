@@ -9,4 +9,10 @@ public class TransactionTypeService : BaseService<TransactionType>, ITransaction
     public TransactionTypeService(DbContext context) : base(context)
     {
     }
+
+    public async Task<TransactionType?> GetByRelativeTypeAsync(int type)
+    {
+        IQueryable<TransactionType?> query = _dbSet.AsQueryable();
+        return query.FirstOrDefault(x => x.Type == type);
+    }
 }

@@ -10,10 +10,12 @@ namespace FullstackAfiliados.Application.UseCases.Transactions.Handlers;
 public class TransactionsFromFileHandler: IBaseHandler<TransactionsFromFileRequest, TransactionsFromFileResponse>
 {
     private readonly ITransactionService _service;
+    private readonly ITransactionTypeService _typeService;
 
-    public TransactionsFromFileHandler(ITransactionService service)
+    public TransactionsFromFileHandler(ITransactionService service, ITransactionTypeService typeService)
     {
         _service = service;
+        _typeService = typeService;
     }
 
     public async Task<TransactionsFromFileResponse> Handle(TransactionsFromFileRequest request, CancellationToken cancellationToken)
@@ -29,6 +31,12 @@ public class TransactionsFromFileHandler: IBaseHandler<TransactionsFromFileReque
             List<Transaction> transactions = new SalesFile().Parse(content);
             foreach (var transaction in transactions)
             {
+                var type = await _typeService.GetByRelativeTypeAsync(transaction.RelativeType);
+                if (type is null)
+                {
+                    throw new Exception("Invalid transaction type");
+                }
+                transaction.Type = type;
                 await _service.CreateAsync(transaction);
             }
         }
