@@ -6,55 +6,73 @@ using FullstackAfiliados.Domain.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Moq;
 
-namespace FullstackAfiliados.Tests.Application.UseCases;
-
-public class TransactionsFromFileTest
+namespace FullstackAfiliados.Tests.Application.UseCases
 {
-    [Theory]
-    [InlineData(2, "2022-02-01T10:00:00-03:00", "VENDA AFILIADO", 50.00, "MARIA SILVA")]
-    public async Task ValidFileSuccess(int type, string dateStr, string product, decimal amount, string salesman)
+    public class TransactionsFromFileHandlerTests
     {
-        // Arrange
-        var mockService = new Mock<ITransactionService>();
-        var handler = new TransactionsFromFileHandler(mockService.Object);
+        private readonly Mock<ITransactionService> _mockService;
+        private readonly TransactionsFromFileHandler _handler;
 
-        var mockFormFile = new Mock<IFormFile>();
-
-        string content = $"{type}{dateStr}{product.PadRight(30)}{amount * 100:0000000000}{salesman.PadRight(20)}\n";
-        var fileName = "arquivo.txt";
-        var length = content.Length;
-        var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
-        mockFormFile.Setup(f => f.FileName).Returns(fileName);
-        mockFormFile.Setup(f => f.Length).Returns(length);
-        mockFormFile.Setup(f => f.OpenReadStream()).Returns(stream);
-
-        var request = new TransactionsFromFileRequest
+        public TransactionsFromFileHandlerTests()
         {
-            File = mockFormFile.Object
-        };
+            _mockService = new Mock<ITransactionService>();
+            _handler = new TransactionsFromFileHandler(_mockService.Object);
+        }
 
-        // Act
-        var response = await handler.Handle(request, CancellationToken.None);
-
-        // Assert
-        Assert.True(response.Success);
-        mockService.Verify(s => s.CreateAsync(It.IsAny<Transaction>()), Times.AtLeastOnce);
-    }
-
-    [Fact]
-    public async Task NullFileThrowsException()
-    {
-        // Arrange
-        var mockService = new Mock<ITransactionService>();
-        var handler = new TransactionsFromFileHandler(mockService.Object);
-
-        var request = new TransactionsFromFileRequest
+        private Mock<IFormFile> CreateMockFormFile(string content)
         {
-            File = null
-        };
+            var mockFormFile = new Mock<IFormFile>();
+            var fileName = "arquivo.txt";
+            var length = content.Length;
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes(content));
 
-        // Act & Assert
-        await Assert.ThrowsAsync<Exception>(() => handler.Handle(request, CancellationToken.None));
+            mockFormFile.Setup(f => f.FileName).Returns(fileName);
+            mockFormFile.Setup(f => f.Length).Returns(length);
+            mockFormFile.Setup(f => f.OpenReadStream()).Returns(stream);
+
+            return mockFormFile;
+        }
+
+        [Theory]
+        [InlineData(2, "2022-02-01T10:00:00-03:00", "VENDA AFILIADO", 50.00, "MARIA SILVA")]
+        public async Task ValidFileSuccessfully(int type, string dateStr, string product, decimal amount, string salesman)
+        {
+            #region Arrange
+
+            var content = $"{type}{dateStr}{product.PadRight(30)}{amount * 100:0000000000}{salesman.PadRight(20)}\n";
+            var mockFormFile = CreateMockFormFile(content);
+            var request = new TransactionsFromFileRequest { File = mockFormFile.Object };
+
+            #endregion
+
+            #region Act
+
+            var response = await _handler.Handle(request, CancellationToken.None);
+
+            #endregion
+
+            #region Assert
+
+            Assert.True(response.Success);
+            _mockService.Verify(s => s.CreateAsync(It.IsAny<Transaction>()), Times.AtLeastOnce);
+
+            #endregion
+        }
+
+        [Fact]
+        public async Task NullFileThrowsException()
+        {
+            #region Arrange
+
+            var request = new TransactionsFromFileRequest { File = null };
+
+            #endregion
+
+            #region Act & Assert
+
+            await Assert.ThrowsAsync<Exception>(() => _handler.Handle(request, CancellationToken.None));
+
+            #endregion
+        }
     }
-
 }
