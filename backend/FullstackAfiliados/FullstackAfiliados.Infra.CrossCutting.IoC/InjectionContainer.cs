@@ -12,6 +12,7 @@ public static class InjectionContainer
         {
             // Register Services
             services.AddScoped<ITransactionService, TransactionService>();
+            services.AddScoped<ITransactionTypeService, TransactionTypeService>();
         }
         return services;
     }
