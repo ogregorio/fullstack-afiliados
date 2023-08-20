@@ -24,4 +24,5 @@
       <ProjectReference Include="..\FullstackAfiliados.Infra.Data\FullstackAfiliados.Infra.Data.csproj" />
     </ItemGroup>
 
+
 </Project>

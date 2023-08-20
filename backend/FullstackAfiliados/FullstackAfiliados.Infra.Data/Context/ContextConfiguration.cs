@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace FullstackAfiliados.Infra.Data.Configurations;
+namespace FullstackAfiliados.Infra.Data.Context;
 
 public static class ContextConfiguration
 {
