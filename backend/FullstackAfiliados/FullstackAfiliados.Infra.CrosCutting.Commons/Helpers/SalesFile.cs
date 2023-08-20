@@ -12,7 +12,7 @@ public class SalesFile
 
         foreach (string line in lines)
         {
-            if (line.Length >= 86)
+            if (!String.IsNullOrWhiteSpace(line))
             {
                 transactions.Add(new Transaction
                 {
@@ -20,7 +20,7 @@ public class SalesFile
                     Date = DateTime.ParseExact(line.Substring(1, 25), "yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture),
                     Product = line.Substring(26, 30).Trim(),
                     Amount = decimal.Parse(line.Substring(56, 10)) / 100,
-                    Salesman = line.Substring(66, 20).Trim()
+                    Salesman = line.Substring(66).Trim()
                 });
             }
         }

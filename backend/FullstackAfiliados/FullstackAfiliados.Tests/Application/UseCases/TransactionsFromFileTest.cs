@@ -3,6 +3,7 @@ using FullstackAfiliados.Application.UseCases.Transactions.Handlers;
 using FullstackAfiliados.Application.UseCases.Transactions.Request;
 using FullstackAfiliados.Domain.Entities;
 using FullstackAfiliados.Domain.Services.Interfaces;
+using FullstackAfiliados.Infra.CrosCutting.Exceptions;
 using FullstackAfiliados.Tests.Factory;
 using Microsoft.AspNetCore.Http;
 using Moq;
@@ -77,7 +78,7 @@ namespace FullstackAfiliados.Tests.Application.UseCases
 
             #region Act & Assert
 
-            await Assert.ThrowsAsync<Exception>(() => _handler.Handle(request, CancellationToken.None));
+            await Assert.ThrowsAsync<BadRequestException>(() => _handler.Handle(request, CancellationToken.None));
 
             #endregion
         }
