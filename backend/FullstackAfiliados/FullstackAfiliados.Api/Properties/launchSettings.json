@@ -1,4 +1,5 @@
 ﻿{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -8,13 +9,18 @@
     }
   },
   "profiles": {
-    "FullstackAfiliados.Api": {
+    "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7140;http://localhost:5113",
+      "launchUrl": "swagger",
+      "applicationUrl": "http://localhost:5001",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://*:5001",
+        "DATABASE_HOST": "localhost",
+        "DATABASE_USER": "postgres",
+        "DATABASE_PASSWORD": "postgres"
       }
     },
     "IIS Express": {

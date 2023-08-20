@@ -11,7 +11,7 @@ public class DataContext : DbContext
         {
             Host = Environment.GetEnvironmentVariable("DATABASE_HOST"),
             Port = int.Parse(Environment.GetEnvironmentVariable("DATABASE_PORT") ?? "5432"),
-            Database = Environment.GetEnvironmentVariable("DATABASE_DEFAULT"),
+            Database = Environment.GetEnvironmentVariable("DATABASE_DEFAULT") ?? "FullstackAfiliados",
             Username = Environment.GetEnvironmentVariable("DATABASE_USER"),
             Password = Environment.GetEnvironmentVariable("DATABASE_PASSWORD")
         };
