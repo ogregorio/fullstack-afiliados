@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FullstackAfiliados.Api.Controllers;
 
+[Route("transactions")]
 public class TransactionsController: MainController
 {
     private readonly IMediator _mediator;
@@ -21,7 +22,7 @@ public class TransactionsController: MainController
     /// <returns></returns>
     [Consumes("multipart/form-data")]
     [HttpPost("file")]
-    public async Task<ActionResult<TransactionsFromFileResponse>> PostAsync([FromForm] IFormFile file)
+    public async Task<ActionResult<TransactionsFromFileResponse>> PostAsync(IFormFile file)
     {
         var result = await _mediator.Send(new TransactionsFromFileRequest { File = file });
         return Ok(result);

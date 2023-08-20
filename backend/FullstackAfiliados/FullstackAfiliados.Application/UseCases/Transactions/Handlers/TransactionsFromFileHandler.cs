@@ -3,6 +3,7 @@ using FullstackAfiliados.Application.UseCases.Transactions.Request;
 using FullstackAfiliados.Application.UseCases.Transactions.Response;
 using FullstackAfiliados.Domain.Entities;
 using FullstackAfiliados.Domain.Services.Interfaces;
+using FullstackAfiliados.Infra.CrosCutting.Exceptions;
 using FullstackAfiliados.Infra.CrosCutting.Helpers;
 
 namespace FullstackAfiliados.Application.UseCases.Transactions.Handlers;
@@ -22,7 +23,7 @@ public class TransactionsFromFileHandler: IBaseHandler<TransactionsFromFileReque
     {
         if (request.File is null || request.File.Length == 0)
         {
-            throw new Exception("Invalid file");
+            throw new BadRequestException("Invalid file");
         }
 
         using (var reader = new StreamReader(request.File.OpenReadStream()))
@@ -34,7 +35,7 @@ public class TransactionsFromFileHandler: IBaseHandler<TransactionsFromFileReque
                 var type = await _typeService.GetByRelativeTypeAsync(transaction.RelativeType);
                 if (type is null)
                 {
-                    throw new Exception("Invalid transaction type");
+                    throw new BadRequestException("Invalid transaction type");
                 }
                 transaction.Type = type;
                 await _service.CreateAsync(transaction);

@@ -1,5 +1,9 @@
+using FullstackAfiliados.Application.UseCases.Transactions.Handlers;
+using FullstackAfiliados.Application.UseCases.Transactions.Request;
+using FullstackAfiliados.Application.UseCases.Transactions.Response;
 using FullstackAfiliados.Domain.Services.Implemented;
 using FullstackAfiliados.Domain.Services.Interfaces;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +17,10 @@ public static class InjectionContainer
             // Register Services
             services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<ITransactionTypeService, TransactionTypeService>();
+        }
+        {
+            // Register Use Cases
+            services.AddScoped<IRequestHandler<TransactionsFromFileRequest, TransactionsFromFileResponse>, TransactionsFromFileHandler>();
         }
         return services;
     }
