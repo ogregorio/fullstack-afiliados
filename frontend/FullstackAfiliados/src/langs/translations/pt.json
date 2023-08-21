@@ -1,4 +1,5 @@
 {
+    "title": "Fullstack Afiliados",
     "login": {
         "title": "Bem-vindo!",
         "username": "Usuário",
@@ -7,5 +8,12 @@
         "error": {
             "login-failed": "Houve uma falha com o seu login, verifique se digitou o usuário e senha corretamente."
         }
+    },
+    "contact": {
+        "title": "Contato",
+        "email": "E-mail"
+    },
+    "home": {
+        "title": "Página Inicial"
     }
 }
