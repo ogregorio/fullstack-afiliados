@@ -17,7 +17,7 @@ public class TransactionsController: MainController
     }
 
     /// <summary>
-    /// Validate template
+    /// Validate and process file from template
     /// </summary>
     /// <returns></returns>
     [Consumes("multipart/form-data")]
@@ -25,6 +25,17 @@ public class TransactionsController: MainController
     public async Task<ActionResult<TransactionsFromFileResponse>> PostAsync(IFormFile file)
     {
         var result = await _mediator.Send(new TransactionsFromFileRequest { File = file });
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Get transactions from template
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet]
+    public async Task<ActionResult<GetTransactionsPerSalesmanResponse>> GetAsync([FromQuery] GetTransactionsPerSalesmanRequest request)
+    {
+        var result = await _mediator.Send(request);
         return Ok(result);
     }
 }

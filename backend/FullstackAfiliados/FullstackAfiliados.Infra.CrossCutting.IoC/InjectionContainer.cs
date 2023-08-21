@@ -21,6 +21,8 @@ public static class InjectionContainer
         {
             // Register Use Cases
             services.AddScoped<IRequestHandler<TransactionsFromFileRequest, TransactionsFromFileResponse>, TransactionsFromFileHandler>();
+            services.AddScoped<IRequestHandler<GetTransactionsPerSalesmanRequest, List<GetTransactionsPerSalesmanResponse>>, GetTransactionsPerSalesmanHandler>();
+
         }
         return services;
     }
