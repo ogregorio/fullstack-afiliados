@@ -45,6 +45,8 @@ public class Startup
         services.CreateMapper();
         Console.WriteLine("Configuring: cors");
         services.CorsConfig();
+        Console.WriteLine("Configuring: auth settings");
+        services.AddAuthConfiguration();
         Console.WriteLine("Configuring: controllers");
         services.AddControllers();
         Console.WriteLine("Configuring: swagger documentation");

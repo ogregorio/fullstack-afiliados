@@ -29,6 +29,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FullstackAfiliados.Application\FullstackAfiliados.Application.csproj" />
+      <ProjectReference Include="..\FullstackAfiliados.Infra.CrossCutting.Auth\FullstackAfiliados.Infra.CrossCutting.Auth.csproj" />
       <ProjectReference Include="..\FullstackAfiliados.Infra.CrossCutting.IoC\FullstackAfiliados.Infra.CrossCutting.IoC.csproj" />
       <ProjectReference Include="..\FullstackAfiliados.Infra.Data\FullstackAfiliados.Infra.Data.csproj" />
     </ItemGroup>

@@ -1,4 +1,5 @@
 using FullstackAfiliados.Api.Middlewares;
+using FullstackAfiliados.Infra.CrossCutting.Auth.Middlewares;
 using FullstackAfiliados.Infra.Data.Context;
 
 namespace FullstackAfiliados.Api.Configurations;
@@ -17,6 +18,15 @@ public static class ApiConfiguration
 
         // global error handler
         app.UseMiddleware<ErrorHandlerMiddleware>();
+
+        // Authentication
+        app.UseAuthentication();
+
+        // Authorization
+        app.UseAuthorization();
+
+        // Auth middleware
+        app.UseAuthUser();
 
         // Routing
         app.UseRouting();
