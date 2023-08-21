@@ -28,7 +28,7 @@ namespace FullstackAfiliados.Tests.Commons.Helpers
 
             Assert.Equal(1, transactions.Count);
             Assert.Equal(type, transactions[0].RelativeType);
-            Assert.Equal(DateTime.ParseExact(dateStr, "yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture), transactions[0].Date);
+            Assert.Equal(DateTime.ParseExact(dateStr, "yyyy-MM-ddTHH:mm:ssK", CultureInfo.InvariantCulture).ToUniversalTime(), transactions[0].Date);
             Assert.Equal(product, transactions[0].Product);
             Assert.Equal(amount, transactions[0].Amount);
             Assert.Equal(salesman, transactions[0].Salesman);

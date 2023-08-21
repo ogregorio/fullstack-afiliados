@@ -1,4 +1,5 @@
 using Bogus;
+using FullstackAfiliados.Domain.Dto;
 using FullstackAfiliados.Domain.Entities;
 using FullstackAfiliados.Domain.Entities.Base;
 
@@ -15,7 +16,6 @@ public static class EntityFactory
 
     public static Transaction GetFakeTransaction() =>
         new Faker<Transaction>()
-            .RuleFor(x => x.Type, f => f.PickRandom<TransactionType>())  // Assuming TransactionType is an enum
             .RuleFor(x => x.RelativeType, f => f.Random.Int())
             .RuleFor(x => x.TypeId, f => f.Random.Guid())
             .RuleFor(x => x.Date, f => f.Date.Past())
@@ -29,6 +29,11 @@ public static class EntityFactory
             .RuleFor(x => x.Description, f => f.Lorem.Sentence())
             .RuleFor(x => x.Origin, f => f.Lorem.Word())
             .RuleFor(x => x.Signal, f => f.Random.Bool());
+
+    public static Salesman GetFakeSalesman() =>
+        new Faker<Salesman>()
+            .RuleFor(x => x.Name, f => f.Person.FullName)
+            .RuleFor(x => x.TotalAmount, f => f.Random.Decimal());
 
 }
 public class GenericEntity : Entity
