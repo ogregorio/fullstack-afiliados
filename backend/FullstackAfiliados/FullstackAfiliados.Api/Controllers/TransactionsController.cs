@@ -1,6 +1,7 @@
 using FullstackAfiliados.Api.Controllers.Base;
 using FullstackAfiliados.Application.UseCases.Transactions.Request;
 using FullstackAfiliados.Application.UseCases.Transactions.Response;
+using FullstackAfiliados.Infra.CrossCutting.Auth.Attributes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ public class TransactionsController: MainController
     /// </summary>
     /// <returns></returns>
     [Consumes("multipart/form-data")]
-    [HttpPost("file")]
+    [HttpPost("file"), Private]
     public async Task<ActionResult<TransactionsFromFileResponse>> PostAsync(IFormFile file)
     {
         var result = await _mediator.Send(new TransactionsFromFileRequest { File = file });
@@ -32,7 +33,7 @@ public class TransactionsController: MainController
     /// Get transactions per salesman
     /// </summary>
     /// <returns></returns>
-    [HttpGet]
+    [HttpGet, Private]
     public async Task<ActionResult<GetTransactionsPerSalesmanResponse>> GetAsync([FromQuery] GetTransactionsPerSalesmanRequest request)
     {
         var result = await _mediator.Send(request);
@@ -43,7 +44,7 @@ public class TransactionsController: MainController
     /// Get salesman from transactions
     /// </summary>
     /// <returns></returns>
-    [HttpGet("salesman")]
+    [HttpGet("salesman"), Private]
     public async Task<ActionResult<GetSalesmanFromTransactionsResponse>> GetAsync()
     {
         var result = await _mediator.Send(new GetSalesmanFromTransactionsRequest {});
