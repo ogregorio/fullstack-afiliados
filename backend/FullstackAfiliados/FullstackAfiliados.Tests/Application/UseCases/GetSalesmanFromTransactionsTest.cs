@@ -1,7 +1,6 @@
 using AutoMapper;
 using FullstackAfiliados.Application.UseCases.Transactions.Handlers;
 using FullstackAfiliados.Application.UseCases.Transactions.Request;
-using FullstackAfiliados.Application.UseCases.Transactions.Response;
 using FullstackAfiliados.Domain.Dto;
 using FullstackAfiliados.Domain.Services.Interfaces;
 using FullstackAfiliados.Tests.Factory;
