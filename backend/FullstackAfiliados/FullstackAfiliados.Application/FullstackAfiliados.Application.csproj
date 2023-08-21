@@ -14,11 +14,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FullstackAfiliados.Domain\FullstackAfiliados.Domain.csproj" />
+      <ProjectReference Include="..\FullstackAfiliados.Infra.CrossCutting.Auth\FullstackAfiliados.Infra.CrossCutting.Auth.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\FullstackAfiliados.Infra.CrosCutting.Commons\FullstackAfiliados.Infra.CrosCutting.Commons.csproj" />
     </ItemGroup>
+
 
 
 </Project>
