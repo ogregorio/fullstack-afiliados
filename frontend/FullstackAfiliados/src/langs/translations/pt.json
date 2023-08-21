@@ -1,2 +1,11 @@
 {
+    "login": {
+        "title": "Bem-vindo!",
+        "username": "Usuário",
+        "password": "Senha",
+        "button": "Entrar",
+        "error": {
+            "login-failed": "Houve uma falha com o seu login, verifique se digitou o usuário e senha corretamente."
+        }
+    }
 }

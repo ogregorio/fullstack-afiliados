@@ -31,8 +31,7 @@
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.9.0",
     "react2-lighthouse-viewer": "^0.1.201",
-    "sass": "^1.60.0",
-    "strapi-sdk-js": "^2.2.0"
+    "sass": "^1.60.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
