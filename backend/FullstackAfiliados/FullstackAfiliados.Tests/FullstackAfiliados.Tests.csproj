@@ -31,6 +31,8 @@
       <ProjectReference Include="..\FullstackAfiliados.Infra.CrosCutting.Commons\FullstackAfiliados.Infra.CrosCutting.Commons.csproj" />
 
 
+
+
     </ItemGroup>
 
 

@@ -22,7 +22,7 @@ public class SalesFile
                     transactions.Add(new Transaction
                     {
                         RelativeType = int.Parse(line.Substring(0, 1)),
-                        Date = DateTime.ParseExact(line.Substring(1, 25), DATE_FORMAT, CultureInfo.InvariantCulture),
+                        Date = DateTime.ParseExact(line.Substring(1, 25), DATE_FORMAT, CultureInfo.InvariantCulture).ToUniversalTime(),
                         Product = line.Substring(26, 30).Trim(),
                         Amount = decimal.Parse(line.Substring(56, 10)) / 100,
                         Salesman = line.Substring(66).Trim()

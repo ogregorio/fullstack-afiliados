@@ -1,4 +1,5 @@
 using System.Reflection;
+using FullstackAfiliados.Api.Bootstrap;
 using FullstackAfiliados.Api.Configurations;
 using FullstackAfiliados.Infra.CrossCutting.IoC;
 using FullstackAfiliados.Infra.Data.Data;
@@ -54,5 +55,6 @@ public class Startup
     {
         Console.WriteLine("Configuring: api configuration");
         app.UseApiConfiguration(env);
+        app.UseTypesBootstrap().Wait();
     }
 }

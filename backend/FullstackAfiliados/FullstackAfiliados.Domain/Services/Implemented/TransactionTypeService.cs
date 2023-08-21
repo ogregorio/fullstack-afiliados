@@ -15,4 +15,15 @@ public class TransactionTypeService : BaseService<TransactionType>, ITransaction
         IQueryable<TransactionType?> query = _dbSet.AsQueryable();
         return query.FirstOrDefault(x => x.Type == type);
     }
+
+    public async Task<TransactionType?> CreateIfNotExists(TransactionType type)
+    {
+        var exists = await GetByRelativeTypeAsync(type.Type);
+        if (exists is not null)
+        {
+            return exists;
+        }
+
+        return await CreateAsync(type);
+    }
 }
