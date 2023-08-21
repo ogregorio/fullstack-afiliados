@@ -29,13 +29,24 @@ public class TransactionsController: MainController
     }
 
     /// <summary>
-    /// Get transactions from template
+    /// Get transactions per salesman
     /// </summary>
     /// <returns></returns>
     [HttpGet]
     public async Task<ActionResult<GetTransactionsPerSalesmanResponse>> GetAsync([FromQuery] GetTransactionsPerSalesmanRequest request)
     {
         var result = await _mediator.Send(request);
+        return Ok(result);
+    }
+
+    /// <summary>
+    /// Get salesman from transactions
+    /// </summary>
+    /// <returns></returns>
+    [HttpGet("salesman")]
+    public async Task<ActionResult<GetSalesmanFromTransactionsResponse>> GetAsync()
+    {
+        var result = await _mediator.Send(new GetSalesmanFromTransactionsRequest {});
         return Ok(result);
     }
 }
