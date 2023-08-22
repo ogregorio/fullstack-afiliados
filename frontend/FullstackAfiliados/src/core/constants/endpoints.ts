@@ -1,5 +1,6 @@
 const ENDPOINTS: Record<string,string> = {
-  AUTH: '/auth'
+  AUTH: '/auth',
+  UPLOAD: '/transactions/file'
 };
 
 const getApiUrl = (route: string): string =>

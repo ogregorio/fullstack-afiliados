@@ -26,6 +26,10 @@ export default function Login() {
       setError(t('login.error.login-failed'));
     }
   };
+
+  React.useEffect(() => {
+    localStorage.clear();
+  }, []);
   
   return (
     <form className={style.Form} onSubmit={handleSubmit}>

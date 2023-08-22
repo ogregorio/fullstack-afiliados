@@ -20,5 +20,16 @@
         "upload": "Upload do Arquivo",
         "transactions": "Visualizar Transações",
         "exit": "Sair"
+    },
+    "upload": {
+        "success": "Upload do arquivo feito com sucesso!",
+        "title": "Fazer upload do arquivo",
+        "progress": "Progresso do Upload",
+        "upload": "Upload",
+        "error": {
+            "not-file": "Nenum arquivo foi encontrada, tente subir um arquivo com informações novamente",
+            "failed-to-upload": "Houve uma falha ao fazer o upload do arquivo, verifique se é um txt válido e não está vazio",
+            "failed-during-upload": "Houve uma falha durante o upload, verifique a sua conexão com a internet"
+        }
     }
 }

@@ -12,6 +12,7 @@ export function useAuth() {
       const user = await login({ username, password });
       if (user) {
         setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
         return true;
       }
     } catch (error: any) {

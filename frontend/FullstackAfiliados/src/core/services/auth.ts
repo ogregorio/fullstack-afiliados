@@ -12,6 +12,11 @@ const login = async(login: Login): Promise<User|undefined> => {
   }
 };
 
+const logout = (): void => {
+  window.location.href = '/login';
+};
+
 export {
-  login
+  login,
+  logout
 };

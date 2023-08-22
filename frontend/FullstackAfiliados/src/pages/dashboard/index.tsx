@@ -7,15 +7,17 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import styles from './styles.module.sass';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import Upload from './upload';
+import { logout } from '@core/services/auth';
 
 const TOP_BUTTONS = [
   {
-    link: '/upload',
+    link: '/dashboard/upload',
     text: t('menu.upload'),
     icon: <DashboardIcon />,
   },
   {
-    link: '/transactions',
+    link: '/dashboard/transactions',
     text: t('menu.transactions'),
     icon: <ListAltIcon />,
   },
@@ -45,7 +47,10 @@ export default function Dashboard() {
           ))}
         </List>
         <List className={styles.BottomList}>
-          <ListItemButton className={styles.ExitButton}>
+          <ListItemButton 
+            onClick={() => logout()} 
+            className={styles.ExitButton}
+          >
             <ListItemIcon>
               <ExitToAppIcon />
             </ListItemIcon>
@@ -55,6 +60,7 @@ export default function Dashboard() {
       </nav>
       <main className={styles.Content}>
         <Routes>
+          <Route path="upload/*" element={<Upload />} />
         </Routes>
       </main>
     </div>

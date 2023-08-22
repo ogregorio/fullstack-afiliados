@@ -20,8 +20,13 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }: UserProv
   React.useEffect(() => {
     const didMount = async () => {
       if(!user) {
-        if(!window.location.pathname.includes('/login')) {
-          window.location.href = '/login';
+        const fromStorage = JSON.parse(localStorage.getItem('user')!) as User;
+        if(!fromStorage) {
+          if(!window.location.pathname.includes('/login')) {
+            window.location.href = '/login';
+          }
+        } else {
+          setUser(fromStorage);
         }
       }
     };
