@@ -6,6 +6,7 @@ import './langs/i18n';
 import Login from '@pages/login';
 import Header from '@cp/molecules/header';
 import Footer from '@cp/molecules/footer';
+import Dashboard from '@pages/dashboard';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Router>
           <Routes>
             <Route path='/login' element={<Login />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </Router>
         <footer>

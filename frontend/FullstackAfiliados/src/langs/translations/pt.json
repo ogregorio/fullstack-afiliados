@@ -15,5 +15,10 @@
     },
     "home": {
         "title": "Página Inicial"
+    },
+    "menu": {
+        "upload": "Upload do Arquivo",
+        "transactions": "Visualizar Transações",
+        "exit": "Sair"
     }
 }
