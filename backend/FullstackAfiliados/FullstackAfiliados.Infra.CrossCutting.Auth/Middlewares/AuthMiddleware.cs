@@ -25,9 +25,9 @@ public static class AuthMiddleware
 
             var services = context.RequestServices;
             var user = services.GetRequiredService<IUser>();
-            var claimsList = context.User.Claims;
+            var claimsList = context.User.Claims.ToList();
 
-            user.Username = claimsList.FirstOrDefault(x => x.Type == ClaimTypes.Name)!.Value;
+            user.Username = claimsList.FirstOrDefault(x => x.Type.Equals("unique_name"))?.Value;
 
             await next.Invoke();
         });

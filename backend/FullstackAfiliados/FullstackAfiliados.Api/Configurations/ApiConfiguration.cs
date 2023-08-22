@@ -34,9 +34,7 @@ public static class ApiConfiguration
         // Mapping endpoints
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            endpoints.MapControllers();
         });
 
         if (env.IsDevelopment())

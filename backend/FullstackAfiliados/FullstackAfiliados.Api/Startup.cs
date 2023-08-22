@@ -1,6 +1,7 @@
 using System.Reflection;
 using FullstackAfiliados.Api.Bootstrap;
 using FullstackAfiliados.Api.Configurations;
+using FullstackAfiliados.Infra.CrossCutting.Auth.Middlewares;
 using FullstackAfiliados.Infra.CrossCutting.IoC;
 using FullstackAfiliados.Infra.Data.Data;
 using MediatR;
@@ -47,6 +48,7 @@ public class Startup
         services.CorsConfig();
         Console.WriteLine("Configuring: auth settings");
         services.AddAuthConfiguration();
+        services.AddAuthUser();
         Console.WriteLine("Configuring: controllers");
         services.AddControllers();
         Console.WriteLine("Configuring: swagger documentation");

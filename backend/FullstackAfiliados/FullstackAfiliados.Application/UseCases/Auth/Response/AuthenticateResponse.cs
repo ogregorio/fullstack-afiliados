@@ -9,6 +9,6 @@ public class AuthenticateResponse
     {
         Name = name;
         Token = token;
-        ExpiresIn = new DateTime().AddHours(1);
+        ExpiresIn = DateTime.UtcNow.AddHours(1);
     }
 }

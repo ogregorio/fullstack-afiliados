@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace FullstackAfiliados.Infra.CrossCutting.Auth.Attributes;
 
-[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class PrivateAttribute : Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)

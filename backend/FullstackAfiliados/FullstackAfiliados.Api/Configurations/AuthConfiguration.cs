@@ -8,14 +8,13 @@ public static class AuthConfiguration
 {
     public static IServiceCollection AddAuthConfiguration(this IServiceCollection services)
     {
-        services.AddAuthentication(options => { options.DefaultChallengeScheme = "DefaultAuth"; })
+        services.AddAuthentication("DefaultAuth")
             .AddScheme<AuthOptions, AuthHandler>(
                 "DefaultAuth", options =>
                 {
                     options.TokenHeader = "Authorization";
                 }
             );
-        services.AddAuthUser();
         return services;
     }
 }

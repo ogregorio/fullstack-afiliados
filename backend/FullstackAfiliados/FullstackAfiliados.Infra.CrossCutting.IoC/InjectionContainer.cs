@@ -7,8 +7,6 @@ using FullstackAfiliados.Application.UseCases.Transactions.Response;
 using FullstackAfiliados.Domain.Services.Implemented;
 using FullstackAfiliados.Domain.Services.Interfaces;
 using FullstackAfiliados.Infra.CrossCutting.Auth.Authorization;
-using FullstackAfiliados.Infra.CrossCutting.Auth.Handlers.Implemented;
-using FullstackAfiliados.Infra.CrossCutting.Auth.Handlers.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,10 +25,6 @@ public static class InjectionContainer
             // Register Services
             services.AddScoped<ITransactionService, TransactionService>();
             services.AddScoped<ITransactionTypeService, TransactionTypeService>();
-        }
-        {
-            // Auth Handlers
-            services.AddScoped<IJwtTokenAuthHandler, JwtTokenAuthHandler>();
         }
         {
             // Register Use Cases
