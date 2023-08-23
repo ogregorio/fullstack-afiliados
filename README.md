@@ -168,6 +168,8 @@ Here's a brief overview of the chosen libraries and their relevance in the proje
 
 7. **react-router-dom**: Facilitating navigation and routing within the React application.
 
+8. **jest**: Jest enhances the testing capabilities of the project. It provides a robust testing framework that simplifies writing unit tests, integration tests, and more.
+
 **DevDependencies:**
 
 1. **@typescript-eslint/eslint-plugin** and **@typescript-eslint/parser**: The project integrates TypeScript into the ESLint environment through these packages, augmenting code quality and consistency through type-checking.
@@ -179,6 +181,8 @@ Here's a brief overview of the chosen libraries and their relevance in the proje
 4. **typescript**: TypeScript, a typed superset of JavaScript, is embraced within the project to heighten code quality and improve the development experience.
 
 5. **vite**: Vite, serving as a rapid and minimalist build tool and development server, contributes to modern web development practices in the project, particularly beneficial for React applications.
+
+6. **@testing-library/react** and **@testing-library/jest-dom**: These libraries, along with **@testing-library/user-event**, empower the project with user-centric testing approaches. They enable testing React components in a way that simulates user interactions and behavior.
 
 # Tests
 
