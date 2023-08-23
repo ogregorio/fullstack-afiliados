@@ -1,6 +1,7 @@
 import { CircularProgress, Alert, AlertTitle, List, ListItem, ListItemText, Typography, Paper } from '@mui/material';
 import useSalesman from '@core/hooks/useSalesman';
 import { Salesman } from 'src/types/salesman.type';
+import { Link } from 'react-router-dom';
 
 export default function SalesmanList() {
   const { loading, data, error } = useSalesman();
@@ -25,8 +26,16 @@ export default function SalesmanList() {
       {(data?.length || 0) > 0 ? (
         <List>
           {data?.map((salesman: Salesman, index: number) => (
-            <ListItem key={index}>
-              <ListItemText primary={salesman.name} secondary={`Total Amount: $${salesman.totalAmount}`} />
+            <ListItem
+              key={index}
+              component={Link} 
+              to={`/dashboard/salesmans/${salesman.name}`}
+            >
+              <ListItemText
+                primary={salesman.name}
+                secondary={
+                  `${t('salesman.total-amount')}: ${t('global.currency')} ${salesman.totalAmount}`}
+              />
             </ListItem>
           ))}
         </List>

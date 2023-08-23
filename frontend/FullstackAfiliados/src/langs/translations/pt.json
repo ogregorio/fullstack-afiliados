@@ -1,5 +1,8 @@
 {
     "title": "Fullstack Afiliados",
+    "global": {
+        "currency": "R$"
+    },
     "login": {
         "title": "Bem-vindo!",
         "username": "Usuário",
@@ -35,6 +38,16 @@
     "salesman": {
         "title": "Lista de Afiliados:",
         "not-found": "Nenhum afiliado cadastrado",
-        "error": "Houve uma falha ao consultar os afiliados"
+        "error": "Houve uma falha ao consultar os afiliados",
+        "total-amount": "Valor total"
+    },
+    "transactions": {
+        "date": "Data",
+        "product": "Produto",
+        "amount": "Valor",
+        "origin": "Natureza",
+        "description": "Descrição",
+        "signal": "Sinal",
+        "type": "Tipo"
     }
 }

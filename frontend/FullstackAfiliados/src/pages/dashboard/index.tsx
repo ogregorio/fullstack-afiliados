@@ -10,6 +10,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import Upload from './upload';
 import { logout } from '@core/services/auth';
 import Salesmans from './salesman';
+import TransactionsPage from './salesman/:id';
 
 const TOP_BUTTONS = [
   {
@@ -63,6 +64,7 @@ export default function Dashboard() {
         <Routes>
           <Route path="upload/*" element={<Upload />} />
           <Route path="salesmans/*" element={<Salesmans />} />
+          <Route path="salesmans/:id" element={<TransactionsPage />} />
         </Routes>
       </main>
     </div>
