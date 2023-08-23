@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import SalesmanListOrganism from '.';
 import { MemoryRouter } from 'react-router-dom';
 
-const dummyData = [
+const dataData = [
   { name: 'John Doe', totalAmount: 1000 },
   { name: 'Jane Smith', totalAmount: 1500 },
 ];
@@ -10,7 +10,7 @@ const dummyData = [
 test('renders SalesmanListOrganism with data', () => {
   const { getByText } = render(
     <MemoryRouter>
-      <SalesmanListOrganism data={dummyData} t={(key) => key} />
+      <SalesmanListOrganism data={dataData} t={(key) => key} />
     </MemoryRouter>
   );
 

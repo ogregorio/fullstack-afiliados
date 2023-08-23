@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
-import SalesmanListItemMolecule from './';
+import SalesmanListItemMolecule from '.';
 import { MemoryRouter } from 'react-router-dom';
 
-const dummySalesman = {
+const dataSalesman = {
   name: 'John Doe',
   totalAmount: 1000,
 };
@@ -10,7 +10,7 @@ const dummySalesman = {
 test('renders SalesmanListItemMolecule', () => {
   const { getByText } = render(
     <MemoryRouter>
-      <SalesmanListItemMolecule salesman={dummySalesman} t={(key) => key} />
+      <SalesmanListItemMolecule salesman={dataSalesman} t={(key) => key} />
     </MemoryRouter>
   );
 
