@@ -9,6 +9,7 @@ import styles from './styles.module.sass';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Upload from './upload';
 import { logout } from '@core/services/auth';
+import Salesmans from './salesman';
 
 const TOP_BUTTONS = [
   {
@@ -17,7 +18,7 @@ const TOP_BUTTONS = [
     icon: <DashboardIcon />,
   },
   {
-    link: '/dashboard/transactions',
+    link: '/dashboard/salesmans',
     text: t('menu.transactions'),
     icon: <ListAltIcon />,
   },
@@ -61,6 +62,7 @@ export default function Dashboard() {
       <main className={styles.Content}>
         <Routes>
           <Route path="upload/*" element={<Upload />} />
+          <Route path="salesmans/*" element={<Salesmans />} />
         </Routes>
       </main>
     </div>

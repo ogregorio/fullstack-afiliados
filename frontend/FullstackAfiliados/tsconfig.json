@@ -21,9 +21,10 @@
       "@pages/*": ["./src/pages/*"],
       "@assets/*": ["./src/assets/*"],
       "@core/*": ["./src/core/*"],
+      "@types/*": ["./src/core/*"],
     },
     "types": ["vite/client"],
-    "composite": true,
+    "composite": true
   },
   "include": ["src","types","vite.config.ts", "src/**/*.json"],
   "references": [{ "path": "./tsconfig.node.json" }]

@@ -19,6 +19,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@core': path.resolve(__dirname, './src/core'),
+      '@types': path.resolve(__dirname, './src/types'),
     },
   },
   server: {

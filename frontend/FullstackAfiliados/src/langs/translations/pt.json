@@ -31,5 +31,10 @@
             "failed-to-upload": "Houve uma falha ao fazer o upload do arquivo, verifique se é um txt válido e não está vazio",
             "failed-during-upload": "Houve uma falha durante o upload, verifique a sua conexão com a internet"
         }
+    },
+    "salesman": {
+        "title": "Lista de Afiliados:",
+        "not-found": "Nenhum afiliado cadastrado",
+        "error": "Houve uma falha ao consultar os afiliados"
     }
 }
