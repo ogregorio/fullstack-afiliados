@@ -2,131 +2,176 @@
 
 O objetivo desse teste é avaliar as suas habilidades em programação.
 
-### Antes de começar
- 
-- Prepare o projeto para ser disponibilizado no Github, copiando o conteúdo deste repositório para o seu (ou utilize o fork do projeto e aponte para o Github). Confirme que a visibilidade do projeto é pública (não esqueça de colocar no readme a referência a este challenge);
-- O projeto deve utilizar a Linguagem específica na sua Vaga (caso esteja se candidatando). Por exempo: Python, R, Scala e entre outras;
-- Considere como deadline 5 dias a partir do início do desafio. Caso tenha sido convidado a realizar o teste e não seja possível concluir dentro deste período, avise a pessoa que o convidou para receber instruções sobre o que fazer.
-- Documentar todo o processo de investigação para o desenvolvimento da atividade (README.md no seu repositório); os resultados destas tarefas são tão importantes do que o seu processo de pensamento e decisões à medida que as completa, por isso tente documentar e apresentar os seus hipóteses e decisões na medida do possível.
-
-## Descrição do projeto
-
-Surgiu uma nova demanda urgente e precisamos de uma área exclusiva para fazer o
-upload de um arquivo das transações feitas na venda de produtos por nossos
-clientes.
-
-Nossa plataforma trabalha no modelo criador-afiliado, sendo assim um criador
-pode vender seus produtos e ter 1 ou mais afiliados também vendendo esses
-produtos, desde que seja paga uma comissão por venda.
-
-Sua tarefa é construir uma interface web que possibilite o upload de um arquivo
-de transações de produtos vendidos, normalizar os dados e armazená-los em um
-banco de dados relacional.
-
-Você deve utilizar o arquivo [sales.txt](sales.txt) para fazer o teste da
-aplicação. O formato esá descrito na seção "Formato do arquivo de entrada".
-
-
-## Requisitos Funcionais
-
-Sua aplicação deve:
-
-1. Ter uma tela (via formulário) para fazer o upload do arquivo
-2. Fazer o parsing do arquivo recebido, normalizar os dados e armazená-los em um
-   banco de dados relacional, seguindo as definições de interpretação do arquivo
-3. Exibir a lista das transações de produtos importadas por produtor/afiliado,
-   com um totalizador do valor das transações realizadas
-4. Fazer tratamento de erros no backend, e reportar mensagens de erro amigáveis
-   no frontend.
-
-## Requisitos Não Funcionais
-
-1. A aplicação deve ser simples de configurar e rodar, compatível com ambiente
-   Unix. Você deve utilizar apenas bibliotecas gratuitas ou livres.
-2. Utilize docker para os diferentes serviços que compõe a aplicação para
-   que funcione facilmente fora do seu ambiente pessoal.
-3. Use qualquer banco de dados relacional.
-4. Use commits pequenos no Git e escreva uma boa descrição para cada um.
-5. Escreva unit tests tanto no backend quanto do frontend.
-6. Faça o código mais legível e limpo possível.
-7. Escreva o código (nomes e comentários) em inglês. A documentação pode ser em
-   português se preferir.
-
-## Requisitos Bônus
-
-Sua aplicação não precisa, mas ficaremos impressionados se ela:
-
-1. Tiver documentação das APIs do backend.
-2. Utilizar docker-compose para orquestar os serviços num todo.
-3. Ter testes de integração ou end-to-end.
-4. Tiver toda a documentação escrita em inglês fácil de entender. 
-5. Lidar com autenticação e/ou autorização.
-
-## Formato do arquivo de entrada
-
-| Campo    | Início | Fim | Tamanho | Descrição                      |
-| -------- | ------ | --- | ------- | ------------------------------ |
-| Tipo     | 1      | 1   | 1       | Tipo da transação              |
-| Data     | 2      | 26  | 25      | Data - ISO Date + GMT          |
-| Produto  | 27     | 56  | 30      | Descrição do produto           |
-| Valor    | 57     | 66  | 10      | Valor da transação em centavos |
-| Vendedor | 67     | 86  | 20      | Nome do vendedor               |
-
-### Tipos de transação
-
-Esses são os valores possíveis para o campo Tipo:
-
-| Tipo | Descrição         | Natureza | Sinal |
-| ---- | ----------------- | -------- | ----- |
-| 1    | Venda produtor    | Entrada  | +     |
-| 2    | Venda afiliado    | Entrada  | +     |
-| 3    | Comissão paga     | Saída    | -     |
-| 4    | Comissão recebida | Entrada  | +     |
-
-## Avaliação
-
-Seu projeto será avaliado de acordo com os seguintes critérios:
-
-1. Documentação do setup do ambiente e execução que rode a aplicação com
-   sucesso.
-2. Cumprimento dos [requisitos funcionais](#Requisitos-Funcionais) e
-   [não funcionais](#Requisitos-Nao-Funcionais).
-3. Boa estruturação do componentes e layout de código, mas sem over engineering.
-3. Legibilidade do código.
-4. Boa cobertura de testes.
-5. Claridade e extensão da documentação.
-6. Cumprimento de algum [requisito bônus](#Requisitos-Bonus).
-
-## Readme do Repositório
-
-- Deve conter o título do projeto
-- Uma descrição sobre o projeto em frase
-- Deve conter uma lista com linguagem, framework e/ou tecnologias usadas
-- Como instalar e usar o projeto (instruções)
-- Não esqueça o [.gitignore](https://www.toptal.com/developers/gitignore)
-- Se está usando github pessoal, referencie que é um challenge by coodesh:  
-
 >  This is a challenge by [Coodesh](https://coodesh.com/)
 
-## Finalização e Instruções para a Apresentação
+<!-- TOC start -->
 
-Avisar sobre a finalização e enviar para correção.
+- [Results](#results)
+- [Infrastructure](#infrastructure)
+- [Backend](#backend)
+  * [Architecture](#architecture)
+  * [Libraries](#libraries)
+- [Frontend](#frontend)
+  * [Structure](#structure)
+  * [Libraries](#libraries-1)
+- [Tests](#tests)
+  * [Postman](#postman)
 
-1. Confira se você respondeu o Scorecard anexado na Vaga que se candidatou;
-2. Confira se você respondeu o Mapeamento anexado na Vaga que se candidatou;
-3. Acesse [https://coodesh.com/challenges/review](https://coodesh.com/challenges/review);
-4. Adicione o repositório com a sua solução;
-5. Grave um vídeo, utilizando o botão na tela de solicitar revisão da Coodesh, com no máximo 5 minutos, com a apresentação do seu projeto. Utilize o tempo para:
-- Explicar o objetivo do desafio
-- Quais tecnologias foram utilizadas
-- Mostrar a aplicação em funcionamento
-- Foque em pontos obrigatórios e diferenciais quando for apresentar.
-6. Adicione o link da apresentação do seu projeto no README.md.
-7. Verifique se o Readme está bom e faça o commit final em seu repositório;
-8. Confira a vaga desejada;
-9. Envie e aguarde as instruções para seguir no processo. Sucesso e boa sorte. =)
+<!-- TOC end -->
 
-## Suporte
+# Results
 
-Use a [nossa comunidade](https://discord.gg/rdXbEvjsWu) para tirar dúvidas sobre o processo ou envie uma mensagem diretamente a um especialista no chat da plataforma. 
+For this project, I chose the Clean Architecture for the backend and Atomic Design for the frontend. In both cases, the choice is not only related to familiarity and a positive past experience with these architectures, but also due to their significant advantages in terms of implementation speed.
 
+When I hear about an urgent demand, I believe that things not only can, but should change considerably over time. Therefore, creating an application that is easily adaptable to new requirements becomes essential. Another aspect considered in this scenario is the data input. Since we are using a specific model, we have an isolated use case outside the application layer. Consequently, if we switch to CSV, XSLX, or even an API call in the future, the application should be capable of receiving this information without a revision of the entire domain layer.
+
+The infrastructure is set up using Docker Compose, and the database in use is PostgresSQL. This relational database is fast and performant, offering numerous additional functions and native support for BSON and JSON objects. This feature proves to be highly advantageous in many cases.
+
+Integration testing has been carried out utilizing Postman, which is the most suitable choice given the available time for constructing the application.
+
+It's worth highlighting that the project details can be found in the [PROJECT.md](./PROJECT.md) file.
+
+# Infrastructure
+
+Docker Compose is a tool that allows you to define and run applications composed of multiple Docker containers. It simplifies the process of orchestrating and managing these containers, allowing you to describe the configuration of all your application's services in a single YAML file.
+
+To start an application using Docker Compose, follow these steps:
+
+1. **Open the Terminal:**
+   - Open the terminal in the directory where the `docker-compose.yml` file is located (at the root of the project).
+
+2. **Execute the Command:**
+   - Use the command `docker-compose up` to start all the containers defined in the file. Docker Compose will download the necessary images, configure the containers, and run them.
+
+3. **Monitor the Log:**
+   - The terminal will display the startup log of the containers. You'll be able to see the status and messages of each service.
+
+4. **Access the Application:**
+   - Once the application is fully started, you can access it through a web browser or other tools: front-end: http://localhost:3000/ and back-end: http://localhost:5001/swagger/
+
+5. **Finish Execution:**
+   - To stop the execution of the containers, press `Ctrl + C` in the terminal. If you wish to remove the containers after execution, use the `docker-compose down` command.
+
+
+# Backend
+
+## Architecture
+
+For this project, the .NET framework was used, and the structure of the presented solution follows the principles of Clean Architecture, an architectural pattern that aims to separate concerns and maintain independence between different layers of an application. Clean Architecture is characterized by an organization into concentric layers, where the inner layers represent the core of the application, and the outer layers represent infrastructure details.
+
+In this pattern, the layers are organized as follows:
+
+1. **Domain Layer:**
+   - Represents the core of the application, containing business rules, entities, and application use cases. This layer is independent of technical details and can be tested and reused without relying on external frameworks or libraries.
+
+2. **Application Layer:**
+   - Contains application logic, including use case orchestration and service implementation. This layer interacts directly with the domain layer and coordinates the execution of application workflows.
+
+3. **Interfaces Layer (Presentation and API):**
+   - Represents the user interface or external communication interfaces (APIs). This layer does not contain business logic but only directs user requests to the appropriate use cases in the application layer.
+
+4. **Infrastructure Layer (Infra, Data, CrossCutting):**
+   - Contains implementation details, such as database access, external services, Dependency Injection configuration, and other infrastructure components. This layer is kept separate from the domain and application layers to ensure the independence and testability of the core application.
+
+By organizing different parts of the application into well-defined layers with clear separation of responsibilities, maintenance, evolution, and testing of the application are facilitated, while promoting a robust and scalable architecture.
+
+## Libraries
+
+Here's a list of the libraries used and their importance in the project context:
+
+1. **xUnit:**
+   - xUnit is a unit testing framework for .NET. It facilitates the creation and execution of automated tests, ensuring code quality and reliability throughout development.
+
+2. **MediatR:**
+   - MediatR is a message mediation library that helps implement patterns like CQRS (Command Query Responsibility Segregation) and the Mediator Pattern. It promotes decoupling between application components by allowing messages (commands and queries) to be transmitted and handled without direct coupling.
+
+3. **Entity Framework:**
+   - Entity Framework is an Object-Relational Mapping (ORM) framework that simplifies access to and manipulation of relational databases. It maps application objects to database tables, allowing developers to interact with data through objects and LINQ queries.
+
+4. **Serilog:**
+   - Serilog is a flexible and extensible logging library. It enables the creation of structured and customizable logs, aiding in debugging, monitoring, and issue analysis within the application.
+
+5. **Swagger:**
+   - Swagger is an automatic API documentation generation tool. It creates interactive and user-friendly documentation for application APIs, making it easier for developers and external teams to understand and consume.
+
+6. **AutoMapper:**
+   - AutoMapper is a library that simplifies object-to-object conversion. It automates the mapping of properties between objects, especially useful when converting Data Transfer Objects (DTOs) to domain entities and vice versa.
+
+7. **Npgsql:**
+   - Npgsql is a PostgreSQL database driver for .NET. It allows the application to connect to a PostgreSQL database and perform operations such as queries, inserts, updates, and deletions.
+
+8. **Moq:**
+   - Moq is a mocking library for .NET. It facilitates the creation of simulated objects (mocks) for testing, allowing isolation of components and simulating behaviors to ensure effective unit testing.
+
+# Frontend
+
+## Structure
+
+This structure follows the concepts of Atomic Design, enabling modularity, reusability, and efficient code maintenance. It's an organized way to develop scalable user interfaces:
+
+1. **App.tsx:** Main entry file of your application, where you likely set up routing and the overall structure.
+
+2. **assets:** Folder to store static assets, such as images.
+
+3. **components:** Central folder for reusable components, organized into three subfolders:
+   - **atoms:** Simple and indivisible components like buttons and input fields.
+   - **molecules:** More complex components composed of atoms, such as an input field with a label.
+   - **organisms:** Even more complex components that can contain multiple molecules and atoms, like a complete form.
+
+4. **core:** Folder containing the core logic of the application:
+   - **constants:** Constants used throughout the application.
+   - **contexts:** React contexts for managing global state.
+   - **hooks:** Custom hooks for reusing logic.
+   - **services:** Logic related to external services, such as API calls.
+   - **utils:** Helper functions used across various parts of the application.
+
+5. **langs:** Folder for internationalization (i18n), containing translation files.
+
+6. **pages:** Organization of main pages, like "dashboard" and "login".
+
+7. **theme:** Files related to the visual theme of the application.
+
+8. **types:** Custom type definitions, including React-related types, internationalization types, and user types.
+
+9. **vite-env.d.ts:** Environment declaration file for Vite, if it's in use.
+
+
+## Libraries
+
+Here's a brief overview of the chosen libraries and their relevance in the project:
+
+**Dependencies:**
+
+1. **@emotion/react** and **@emotion/styled**: The project employs the Emotion library, a CSS-in-JS solution that facilitates writing expressive styles within React components.
+
+2. **@mui/icons-material** and **@mui/material**: Material-UI (MUI) is utilized as a comprehensive component library adhering to Google's Material Design principles. It provides predefined components and styling for a consistent and visually appealing user interface.
+
+4. **axios**: The project makes use of the axios library, which employs promises to create HTTP clients for making network requests, commonly employed for interactions with APIs.
+
+5. **i18next** and **react-i18next**: These libraries are harnessed for internationalization support, streamlining the management of translations and facilitating language switching within the application.
+
+7. **react-router-dom**: Facilitating navigation and routing within the React application.
+
+**DevDependencies:**
+
+1. **@typescript-eslint/eslint-plugin** and **@typescript-eslint/parser**: The project integrates TypeScript into the ESLint environment through these packages, augmenting code quality and consistency through type-checking.
+
+2. **@vitejs/plugin-react**: The integration of React with Vite's rapid development server is achieved using the @vitejs/plugin-react package.
+
+3. **eslint** and **eslint-plugin-react**: For code linting, ESLint is employed, and the eslint-plugin-react package enhances it with rules specific to React development.
+
+4. **typescript**: TypeScript, a typed superset of JavaScript, is embraced within the project to heighten code quality and improve the development experience.
+
+5. **vite**: Vite, serving as a rapid and minimalist build tool and development server, contributes to modern web development practices in the project, particularly beneficial for React applications.
+
+# Tests
+
+## Postman
+
+Postman is a widely used tool by developers and testing teams for testing APIs (Application Programming Interfaces). It provides a user-friendly graphical interface that allows you to create, send, and test HTTP requests to APIs, as well as enable test automation, including integration testing.
+
+Integration tests are a crucial part of software development as they ensure that different components or systems interact correctly with each other. When it comes to APIs, integration tests help verify if the API endpoints are responding as expected, if data is being handled correctly, and if communication between your application and the API is functioning smoothly.
+
+You can access the tests using Postman at the following link:
+
+https://www.postman.com/arthurgregorioleal/workspace/testes-afiliados/overview
