@@ -1,0 +1,48 @@
+version: '3.2'
+
+services:
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    network_mode: 'host'
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata_afiliados:/var/lib/postgresql/data/
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "postgres", "-U", "postgres" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10
+
+  frontend:
+    build:
+      dockerfile: ../Dockerfile
+      context: ./frontend/FullstackAfiliados
+    network_mode: 'host'
+    container_name: frontend
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      dockerfile: ./FullstackAfiliados.Api/Dockerfile
+      context: ./backend/FullstackAfiliados
+    container_name: backend
+    network_mode: 'host'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - ASPNETCORE_URLS=${ASPNETCORE_URLS}
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - SYSTEM_USERNAME=${SYSTEM_USERNAME}
+      - SYSTEM_PASSWORD=${SYSTEM_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - pgdb
+
+volumes:
+  pgdata_afiliados:
