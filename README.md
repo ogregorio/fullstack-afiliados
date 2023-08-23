@@ -7,6 +7,7 @@ O objetivo desse teste é avaliar as suas habilidades em programação.
 <!-- TOC start -->
 
 - [Results](#results)
+- [Running](#running)
 - [Infrastructure](#infrastructure)
 - [Backend](#backend)
   * [Architecture](#architecture)
@@ -30,6 +31,21 @@ The infrastructure is set up using Docker Compose, and the database in use is Po
 Integration testing has been carried out utilizing Postman, which is the most suitable choice given the available time for constructing the application.
 
 It's worth highlighting that the project details can be found in the [PROJECT.md](./PROJECT.md) file.
+
+# Running
+
+To run the application is very simple, just run the command:
+
+```
+docker-compose --env-file .env.example -f docker-compose.yml up
+```
+
+And the applications ran on the following URLs:
+
+- Backend: [http://localhost:5001/swagger](http://localhost:5001/swagger)
+- Frontend: [http://localhost:4173/login](http://localhost:4173/login)
+
+At the frontend login, your username should be: SYSTEM_USERNAME and the password SYSTEM_PASSWORD added to the .env
 
 # Infrastructure
 
