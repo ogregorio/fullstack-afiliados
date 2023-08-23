@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullstackAfiliados.Infra.Data", "FullstackAfiliados.Infra.Data\FullstackAfiliados.Infra.Data.csproj", "{B8A0D6E7-5006-4131-AFFD-01B1F7423A7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullstackAfiliados.Infra.CrosCutting.Commons", "FullstackAfiliados.Infra.CrosCutting.Commons\FullstackAfiliados.Infra.CrosCutting.Commons.csproj", "{CFAAA341-8B97-4618-97AE-ABA9CEA9B270}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FullstackAfiliados.Infra.CrossCutting.Commons", "FullstackAfiliados.Infra.CrossCutting.Commons\FullstackAfiliados.Infra.CrossCutting.Commons.csproj", "{CFAAA341-8B97-4618-97AE-ABA9CEA9B270}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{FF3B40AF-9808-4DE0-882B-E98C7881CB8F}"
 EndProject
