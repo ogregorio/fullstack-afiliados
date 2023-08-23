@@ -1,0 +1,55 @@
+{
+    "title": "Fullstack Afiliados",
+    "global": {
+        "currency": "R$"
+    },
+    "login": {
+        "title": "Bem-vindo!",
+        "username": "Usuário",
+        "password": "Senha",
+        "button": "Entrar",
+        "error": {
+            "login-failed": "Houve uma falha com o seu login, verifique se digitou o usuário e senha corretamente."
+        }
+    },
+    "contact": {
+        "title": "Contato",
+        "email": "E-mail"
+    },
+    "home": {
+        "title": "Página Inicial"
+    },
+    "menu": {
+        "upload": "Upload do Arquivo",
+        "transactions": "Visualizar Transações",
+        "exit": "Sair"
+    },
+    "upload": {
+        "success": "Upload do arquivo feito com sucesso!",
+        "title": "Fazer upload do arquivo",
+        "progress": "Progresso do Upload",
+        "upload": "Upload",
+        "error": {
+            "not-file": "Nenum arquivo foi encontrada, tente subir um arquivo com informações novamente",
+            "failed-to-upload": "Houve uma falha ao fazer o upload do arquivo, verifique se é um txt válido e não está vazio",
+            "failed-during-upload": "Houve uma falha durante o upload, verifique a sua conexão com a internet"
+        }
+    },
+    "salesman": {
+        "title": "Lista de Afiliados:",
+        "not-found": "Nenhum afiliado cadastrado",
+        "error": "Houve uma falha ao consultar os afiliados",
+        "total-amount": "Valor total"
+    },
+    "transactions": {
+        "title": "Transações efetuadas",
+        "not-found": "Nenhuma transação encontrada",
+        "date": "Data",
+        "product": "Produto",
+        "amount": "Valor",
+        "origin": "Natureza",
+        "description": "Descrição",
+        "signal": "Sinal",
+        "type": "Tipo"
+    }
+}

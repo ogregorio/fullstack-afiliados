@@ -1,0 +1,26 @@
+[
+  {
+    "type": 1,
+    "Description": "Venda produtor",
+    "Origin": "Entrada",
+    "Signal": true
+  },
+  {
+    "type": 2,
+    "Description": "Venda afiliado",
+    "Origin": "Entrada",
+    "Signal": true
+  },
+  {
+    "type": 3,
+    "Description": "Comissão paga",
+    "Origin": "Saída",
+    "Signal": false
+  },
+  {
+    "type": 4,
+    "Description": "Comissão recebida",
+    "Origin": "Entrada",
+    "Signal": false
+  }
+]
