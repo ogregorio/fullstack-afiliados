@@ -1,43 +1,46 @@
-import React, { useState } from 'react';
-import {
-  CircularProgress,
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
+import React from 'react';
+import { 
+  Paper, 
+  Typography, 
+  Alert, 
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
-  Alert,
-  TablePagination,
+  TableCell,
+  Table,
+  TableBody 
 } from '@mui/material';
-import useTransactions from '@core/hooks/useTransactions';
-import { Transaction, Type } from 'src/types/transaction.type';
+import CircularProgress from '@cp/atoms/circular-progress';
+import TablePagination from '@cp/molecules/table-pagination';
+import { Transaction } from 'src/types/transaction.type'; // Import the correct type
 
-const TransactionsListComponent: React.FC = () => {
-  const { transactions, loading, error } = useTransactions();
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+interface TransactionsListOrganismProps {
+  transactions: Transaction[];
+  loading: boolean;
+  error: string | null;
+  t: (key: string) => string;
+  page: number;
+  rowsPerPage: number;
+  onPageChange: (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => void;
+  onRowsPerPageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-  if (loading) {
-    return <CircularProgress />;
-  }
-
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
+const TransactionsListOrganism: React.FC<TransactionsListOrganismProps> = ({
+  transactions,
+  loading,
+  error,
+  t,
+  page,
+  rowsPerPage,
+  onPageChange,
+  onRowsPerPageChange,
+}) => {
   return (
     <Paper elevation={3} style={{ padding: '16px' }}>
       <Typography variant="h4" gutterBottom>
-        Transactions List
+        {t('transactions.title')}
       </Typography>
+      {loading && <CircularProgress />}
       {error && <Alert severity="error">{error}</Alert>}
       {transactions.length > 0 ? (
         <TableContainer>
@@ -70,20 +73,18 @@ const TransactionsListComponent: React.FC = () => {
             </TableBody>
           </Table>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
             count={transactions.length}
             rowsPerPage={rowsPerPage}
             page={page}
-            onPageChange={handleChangePage}
-            onRowsPerPageChange={handleChangeRowsPerPage}
+            onPageChange={onPageChange}
+            onRowsPerPageChange={onRowsPerPageChange}
           />
         </TableContainer>
       ) : (
-        <Typography variant="body2">No transactions available.</Typography>
+        <Typography variant="body2">{t('transactions.not-found')}</Typography>
       )}
     </Paper>
   );
 };
 
-export default TransactionsListComponent;
+export default TransactionsListOrganism;

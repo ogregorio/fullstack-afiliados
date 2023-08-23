@@ -42,6 +42,8 @@
         "total-amount": "Valor total"
     },
     "transactions": {
+        "title": "Transações efetuadas",
+        "not-found": "Nenhuma transação encontrada",
         "date": "Data",
         "product": "Produto",
         "amount": "Valor",
