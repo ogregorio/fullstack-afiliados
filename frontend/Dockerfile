@@ -1,5 +1,5 @@
 # Pull image from dockerhub
-FROM node:17-alpine3.14
+FROM node:16-alpine3.14
 
 # Define working directory as /usr/fulstack-afilliados
 WORKDIR /usr/share/fulstack-afilliados
