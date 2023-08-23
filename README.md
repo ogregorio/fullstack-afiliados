@@ -77,6 +77,9 @@ For this project, the .NET framework was used, and the structure of the presente
 
 In this pattern, the layers are organized as follows:
 
+0. **Tests Layer:**
+   -  An abstract layer that contains test rules for all other layers. This layer interacts with all others.
+
 1. **Domain Layer:**
    - Represents the core of the application, containing business rules, entities, and application use cases. This layer is independent of technical details and can be tested and reused without relying on external frameworks or libraries.
 
@@ -86,8 +89,8 @@ In this pattern, the layers are organized as follows:
 3. **Interfaces Layer (Presentation and API):**
    - Represents the user interface or external communication interfaces (APIs). This layer does not contain business logic but only directs user requests to the appropriate use cases in the application layer.
 
-4. **Infrastructure Layer (Infra, Data, CrossCutting):**
-   - Contains implementation details, such as database access, external services, Dependency Injection configuration, and other infrastructure components. This layer is kept separate from the domain and application layers to ensure the independence and testability of the core application.
+4. **Infrastructure Layer (Infra, Data, CrossCutting, Auth):**
+   - Contains implementation details, such as database access, authentication, external services, Dependency Injection configuration, and other infrastructure components. This layer is kept separate from the domain and application layers to ensure the independence and testability of the core application.
 
 By organizing different parts of the application into well-defined layers with clear separation of responsibilities, maintenance, evolution, and testing of the application are facilitated, while promoting a robust and scalable architecture.
 
@@ -133,6 +136,7 @@ This structure follows the concepts of Atomic Design, enabling modularity, reusa
    - **atoms:** Simple and indivisible components like buttons and input fields.
    - **molecules:** More complex components composed of atoms, such as an input field with a label.
    - **organisms:** Even more complex components that can contain multiple molecules and atoms, like a complete form.
+   - **templates:** Templates group organisms together to form pages.
 
 4. **core:** Folder containing the core logic of the application:
    - **constants:** Constants used throughout the application.
@@ -168,6 +172,8 @@ Here's a brief overview of the chosen libraries and their relevance in the proje
 
 7. **react-router-dom**: Facilitating navigation and routing within the React application.
 
+8. **jest**: Jest enhances the testing capabilities of the project. It provides a robust testing framework that simplifies writing unit tests, integration tests, and more.
+
 **DevDependencies:**
 
 1. **@typescript-eslint/eslint-plugin** and **@typescript-eslint/parser**: The project integrates TypeScript into the ESLint environment through these packages, augmenting code quality and consistency through type-checking.
@@ -179,6 +185,8 @@ Here's a brief overview of the chosen libraries and their relevance in the proje
 4. **typescript**: TypeScript, a typed superset of JavaScript, is embraced within the project to heighten code quality and improve the development experience.
 
 5. **vite**: Vite, serving as a rapid and minimalist build tool and development server, contributes to modern web development practices in the project, particularly beneficial for React applications.
+
+6. **@testing-library/react** and **@testing-library/jest-dom**: These libraries, along with **@testing-library/user-event**, empower the project with user-centric testing approaches. They enable testing React components in a way that simulates user interactions and behavior.
 
 # Tests
 
