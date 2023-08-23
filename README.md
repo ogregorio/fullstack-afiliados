@@ -77,6 +77,9 @@ For this project, the .NET framework was used, and the structure of the presente
 
 In this pattern, the layers are organized as follows:
 
+0. **Tests Layer:**
+   -  An abstract layer that contains test rules for all other layers. This layer interacts with all others.
+
 1. **Domain Layer:**
    - Represents the core of the application, containing business rules, entities, and application use cases. This layer is independent of technical details and can be tested and reused without relying on external frameworks or libraries.
 
@@ -86,8 +89,8 @@ In this pattern, the layers are organized as follows:
 3. **Interfaces Layer (Presentation and API):**
    - Represents the user interface or external communication interfaces (APIs). This layer does not contain business logic but only directs user requests to the appropriate use cases in the application layer.
 
-4. **Infrastructure Layer (Infra, Data, CrossCutting):**
-   - Contains implementation details, such as database access, external services, Dependency Injection configuration, and other infrastructure components. This layer is kept separate from the domain and application layers to ensure the independence and testability of the core application.
+4. **Infrastructure Layer (Infra, Data, CrossCutting, Auth):**
+   - Contains implementation details, such as database access, authentication, external services, Dependency Injection configuration, and other infrastructure components. This layer is kept separate from the domain and application layers to ensure the independence and testability of the core application.
 
 By organizing different parts of the application into well-defined layers with clear separation of responsibilities, maintenance, evolution, and testing of the application are facilitated, while promoting a robust and scalable architecture.
 
@@ -133,6 +136,7 @@ This structure follows the concepts of Atomic Design, enabling modularity, reusa
    - **atoms:** Simple and indivisible components like buttons and input fields.
    - **molecules:** More complex components composed of atoms, such as an input field with a label.
    - **organisms:** Even more complex components that can contain multiple molecules and atoms, like a complete form.
+   - **templates:** Templates group organisms together to form pages.
 
 4. **core:** Folder containing the core logic of the application:
    - **constants:** Constants used throughout the application.
